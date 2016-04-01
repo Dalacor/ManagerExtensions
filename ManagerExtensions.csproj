@@ -1,0 +1,158 @@
+﻿<?xml version="1.0" encoding="utf-8"?>
+<Project ToolsVersion="14.0" DefaultTargets="Build" xmlns="http://schemas.microsoft.com/developer/msbuild/2003">
+  <Import Project="$(MSBuildExtensionsPath)\$(MSBuildToolsVersion)\Microsoft.Common.props" Condition="Exists('$(MSBuildExtensionsPath)\$(MSBuildToolsVersion)\Microsoft.Common.props')" />
+  <PropertyGroup>
+    <Configuration Condition=" '$(Configuration)' == '' ">Debug</Configuration>
+    <Platform Condition=" '$(Platform)' == '' ">AnyCPU</Platform>
+    <ProjectGuid>{3614957C-C4EF-4C00-B52A-AC5CDF879BC9}</ProjectGuid>
+    <OutputType>Library</OutputType>
+    <AppDesignerFolder>Properties</AppDesignerFolder>
+    <RootNamespace>ManagerExtensions</RootNamespace>
+    <AssemblyName>ManagerExtensions</AssemblyName>
+    <TargetFrameworkVersion>v4.0</TargetFrameworkVersion>
+    <FileAlignment>512</FileAlignment>
+    <TargetFrameworkProfile />
+  </PropertyGroup>
+  <PropertyGroup Condition=" '$(Configuration)|$(Platform)' == 'Debug|AnyCPU' ">
+    <DebugSymbols>true</DebugSymbols>
+    <DebugType>full</DebugType>
+    <Optimize>false</Optimize>
+    <OutputPath>bin\Debug\</OutputPath>
+    <DefineConstants>DEBUG;TRACE</DefineConstants>
+    <ErrorReport>prompt</ErrorReport>
+    <WarningLevel>4</WarningLevel>
+  </PropertyGroup>
+  <PropertyGroup Condition=" '$(Configuration)|$(Platform)' == 'Release|AnyCPU' ">
+    <DebugType>pdbonly</DebugType>
+    <Optimize>true</Optimize>
+    <OutputPath>bin\Release\</OutputPath>
+    <DefineConstants>TRACE</DefineConstants>
+    <ErrorReport>prompt</ErrorReport>
+    <WarningLevel>4</WarningLevel>
+  </PropertyGroup>
+  <ItemGroup>
+    <Reference Include="System" />
+    <Reference Include="System.Core" />
+    <Reference Include="System.Xml" />
+  </ItemGroup>
+  <ItemGroup>
+    <Compile Include="AssemblyInfo.cs" />
+    <Compile Include="Country.cs" />
+  </ItemGroup>
+  <ItemGroup>
+    <None Include="LICENSE" />
+    <None Include="README.md" />
+  </ItemGroup>
+  <ItemGroup>
+    <Folder Include="Albania\" />
+    <Folder Include="Andorra\" />
+    <Folder Include="Argentina\" />
+    <Folder Include="Armenia\" />
+    <Folder Include="Australia\" />
+    <Folder Include="Austria\" />
+    <Folder Include="Azerbaijan\" />
+    <Folder Include="Bahamas\" />
+    <Folder Include="Barbados\" />
+    <Folder Include="Belarus\" />
+    <Folder Include="Belgium\" />
+    <Folder Include="Bolivia\" />
+    <Folder Include="BosniaAndHerzegovina\" />
+    <Folder Include="Bulgaria\" />
+    <Folder Include="Chile\" />
+    <Folder Include="China\" />
+    <Folder Include="Colombia\" />
+    <Folder Include="Croatia\" />
+    <Folder Include="Cyprus\" />
+    <Folder Include="CzechRepublic\" />
+    <Folder Include="Denmark\" />
+    <Folder Include="DominicanRepublic\" />
+    <Folder Include="Ecuador\" />
+    <Folder Include="Egypt\" />
+    <Folder Include="ElSalvador\" />
+    <Folder Include="Estonia\" />
+    <Folder Include="Ethiopia\" />
+    <Folder Include="FaroeIslands\" />
+    <Folder Include="Fiji\" />
+    <Folder Include="Finland\" />
+    <Folder Include="France\" />
+    <Folder Include="Georgia\" />
+    <Folder Include="Germany\" />
+    <Folder Include="Ghana\" />
+    <Folder Include="Greece\" />
+    <Folder Include="Guatemala\" />
+    <Folder Include="Guyana\" />
+    <Folder Include="Hungary\" />
+    <Folder Include="Iceland\" />
+    <Folder Include="India\" />
+    <Folder Include="Indonesia\" />
+    <Folder Include="Iran\" />
+    <Folder Include="Ireland\" />
+    <Folder Include="Israel\" />
+    <Folder Include="Italy\" />
+    <Folder Include="Japan\" />
+    <Folder Include="Jersey\" />
+    <Folder Include="Jordan\" />
+    <Folder Include="Kazakhstan\" />
+    <Folder Include="Latvia\" />
+    <Folder Include="Lebanon\" />
+    <Folder Include="Liechtenstein\" />
+    <Folder Include="Lithuania\" />
+    <Folder Include="Luxembourg\" />
+    <Folder Include="Malaysia\" />
+    <Folder Include="Maldives\" />
+    <Folder Include="Malta\" />
+    <Folder Include="Mauritius\" />
+    <Folder Include="Mexico\" />
+    <Folder Include="Moldova\" />
+    <Folder Include="Monaco\" />
+    <Folder Include="Montenegro\" />
+    <Folder Include="Morocco\" />
+    <Folder Include="Namibia\" />
+    <Folder Include="Nepal\" />
+    <Folder Include="Netherlands\" />
+    <Folder Include="NewZealand\" />
+    <Folder Include="Norway\" />
+    <Folder Include="Pakistan\" />
+    <Folder Include="Panama\" />
+    <Folder Include="Paraguay\" />
+    <Folder Include="Philippines\" />
+    <Folder Include="Poland\" />
+    <Folder Include="Portugal\" />
+    <Folder Include="Properties\" />
+    <Folder Include="RepublicOfMacedonia\" />
+    <Folder Include="Romania\" />
+    <Folder Include="RussianFederation\" />
+    <Folder Include="Rwanda\" />
+    <Folder Include="SaintKittsAndNevis\" />
+    <Folder Include="Serbia\" />
+    <Folder Include="Singapore\" />
+    <Folder Include="Slovakia\" />
+    <Folder Include="Slovenia\" />
+    <Folder Include="SouthAfrica\" />
+    <Folder Include="SouthKorea\" />
+    <Folder Include="Spain\" />
+    <Folder Include="SriLanka\" />
+    <Folder Include="StateOfPalestine\" />
+    <Folder Include="Sweden\" />
+    <Folder Include="Switzerland\" />
+    <Folder Include="Taiwan\" />
+    <Folder Include="Thailand\" />
+    <Folder Include="Turkey\" />
+    <Folder Include="Uganda\" />
+    <Folder Include="Ukraine\" />
+    <Folder Include="UnitedKingdom\" />
+    <Folder Include="Uruguay\" />
+    <Folder Include="Uzbekistan\" />
+    <Folder Include="Venezuela\" />
+    <Folder Include="Vietnam\" />
+    <Folder Include="Zimbabwe\" />
+  </ItemGroup>
+  <Import Project="$(MSBuildToolsPath)\Microsoft.CSharp.targets" />
+  <!-- To modify your build process, add your task inside one of the targets below and uncomment it. 
+       Other similar extension points exist, see Microsoft.Common.targets.
+  <Target Name="BeforeBuild">
+  </Target>
+  <Target Name="AfterBuild">
+  </Target>
+  -->
+</Project>
