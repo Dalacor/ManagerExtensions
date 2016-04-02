@@ -37,8 +37,14 @@
   </ItemGroup>
   <ItemGroup>
     <Compile Include="AssemblyInfo.cs" />
+    <Compile Include="Australia\GstCalculationWorksheet.cs" />
     <Compile Include="Country.cs" />
+    <Compile Include="HtmlDocument.cs" />
+    <Compile Include="Netherlands\VatReturn.cs" />
+    <Compile Include="TaxReport.cs" />
     <Compile Include="TaxCodes.cs" />
+    <Compile Include="TaxTransaction.cs" />
+    <Compile Include="UnitedKingdom\VatReturn.cs" />
   </ItemGroup>
   <ItemGroup>
     <None Include="LICENSE" />
