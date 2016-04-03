@@ -50,7 +50,7 @@ namespace ManagerExtensions.Australia
             G10 += taxTransactions.Where(x => x.IsCapitalAccount && (x.TaxCode == TaxCodes.Australia_Deferred_GST_10)).Sum(x => x.NetPurchases + x.TaxPaid);
             G10 += taxTransactions.Where(x => x.IsCapitalAccount && (x.TaxCode == TaxCodes.Australia_GST_10_ON_IMPORTS)).Sum(x => x.TaxPaid * 11m);
 
-            var G11 = taxTransactions.Where(x => !x.IsCapitalAccount && (x.TaxCode == TaxCodes.Australia_GST_10 || x.TaxCode == TaxCodes.Australia_GST_FREE || x.TaxCode == TaxCodes.Australia_INPUT_TAXED)).Sum(x => x.NetPurchases + x.TaxAmount);
+            var G11 = taxTransactions.Where(x => !x.IsCapitalAccount && (x.TaxCode == TaxCodes.Australia_GST_10 || x.TaxCode == TaxCodes.Australia_GST_FREE || x.TaxCode == TaxCodes.Australia_INPUT_TAXED)).Sum(x => x.NetPurchases + x.TaxPaid);
             G11 += taxTransactions.Where(x => !x.IsCapitalAccount && (x.TaxCode == TaxCodes.Australia_Deferred_GST_10)).Sum(x => x.NetPurchases + x.TaxPaid);
             G11 += taxTransactions.Where(x => !x.IsCapitalAccount && (x.TaxCode == TaxCodes.Australia_GST_10_ON_IMPORTS)).Sum(x => x.TaxPaid * 11m);
 
@@ -109,14 +109,14 @@ namespace ManagerExtensions.Australia
                     using (Td()) { }
                     using (Td()) { }
                     using (Td(@class: "dollar-sign")) Write("$");
-                    using (Td(@class: "amount")) using (Div()) Write(G1.ToString("0,0"));
+                    using (Td(@class: "amount")) using (Div()) Write(G1.ToString("#,0"));
                 }
                 using (Tr())
                 {
                     using (Td()) Write("G2");
                     using (Td()) Write("Export sales");
                     using (Td(@class: "dollar-sign")) Write("$");
-                    using (Td(@class: "amount")) using (Div()) Write(G2.ToString("0,0"));
+                    using (Td(@class: "amount")) using (Div()) Write(G2.ToString("#,0"));
                     using (Td()) { }
                     using (Td()) { }
                     using (Td()) { }
@@ -126,7 +126,7 @@ namespace ManagerExtensions.Australia
                     using (Td()) Write("G3");
                     using (Td()) Write("Other GST-free sales");
                     using (Td(@class: "dollar-sign")) Write("$");
-                    using (Td(@class: "amount")) using (Div()) Write(G3.ToString("0,0"));
+                    using (Td(@class: "amount")) using (Div()) Write(G3.ToString("#,0"));
                     using (Td()) { }
                     using (Td()) { }
                     using (Td()) { }
@@ -136,7 +136,7 @@ namespace ManagerExtensions.Australia
                     using (Td()) Write("G4");
                     using (Td()) Write("Input taxed sales");
                     using (Td(@class: "dollar-sign")) Write("$");
-                    using (Td(@class: "amount")) using (Div()) Write(G4.ToString("0,0"));
+                    using (Td(@class: "amount")) using (Div()) Write(G4.ToString("#,0"));
                     using (Td()) { }
                     using (Td()) { }
                     using (Td()) { }
@@ -149,7 +149,7 @@ namespace ManagerExtensions.Australia
                     using (Td()) { }
                     using (Td()) { }
                     using (Td(@class: "dollar-sign")) Write("$");
-                    using (Td(@class: "amount")) using (Div()) Write(G5.ToString("0,0"));
+                    using (Td(@class: "amount")) using (Div()) Write(G5.ToString("#,0"));
                 }
                 using (Tr())
                 {
@@ -159,7 +159,7 @@ namespace ManagerExtensions.Australia
                     using (Td()) { }
                     using (Td()) { }
                     using (Td(@class: "dollar-sign")) Write("$");
-                    using (Td(@class: "amount")) using (Div()) Write(G6.ToString("0,0"));
+                    using (Td(@class: "amount")) using (Div()) Write(G6.ToString("#,0"));
                 }
                 using (Tr(@class: "line"))
                 {
@@ -169,7 +169,7 @@ namespace ManagerExtensions.Australia
                     using (Td()) { }
                     using (Td()) { }
                     using (Td(@class: "dollar-sign")) Write("$");
-                    using (Td(@class: "amount")) using (Div()) Write(G7.ToString("0,0"));
+                    using (Td(@class: "amount")) using (Div()) Write(G7.ToString("#,0"));
                 }
                 using (Tr())
                 {
@@ -179,7 +179,7 @@ namespace ManagerExtensions.Australia
                     using (Td()) { }
                     using (Td()) { }
                     using (Td(@class: "dollar-sign")) Write("$");
-                    using (Td(@class: "amount")) using (Div()) Write(G8.ToString("0,0"));
+                    using (Td(@class: "amount")) using (Div()) Write(G8.ToString("#,0"));
                 }
                 using (Tr())
                 {
@@ -189,7 +189,7 @@ namespace ManagerExtensions.Australia
                     using (Td()) { }
                     using (Td()) { }
                     using (Td(@class: "dollar-sign")) Write("$");
-                    using (Td(@class: "amount")) using (Div()) Write(G9.ToString("0,0"));
+                    using (Td(@class: "amount")) using (Div()) Write(G9.ToString("#,0"));
                 }
                 using (Tr(@class: "line"))
                 {
@@ -200,7 +200,7 @@ namespace ManagerExtensions.Australia
                     using (Td()) Write("G10");
                     using (Td()) Write("Capital purchases (including any GST)");
                     using (Td(@class: "dollar-sign")) Write("$");
-                    using (Td(@class: "amount")) using (Div()) Write(G10.ToString("0,0"));
+                    using (Td(@class: "amount")) using (Div()) Write(G10.ToString("#,0"));
                     using (Td()) { }
                     using (Td()) { }
                     using (Td()) { }
@@ -210,7 +210,7 @@ namespace ManagerExtensions.Australia
                     using (Td()) Write("G11");
                     using (Td()) Write("Non-capital purchases (including any GST)");
                     using (Td(@class: "dollar-sign")) Write("$");
-                    using (Td(@class: "amount")) using (Div()) Write(G11.ToString("0,0"));
+                    using (Td(@class: "amount")) using (Div()) Write(G11.ToString("#,0"));
                     using (Td()) { }
                     using (Td()) { }
                     using (Td()) { }
@@ -223,14 +223,14 @@ namespace ManagerExtensions.Australia
                     using (Td()) { }
                     using (Td()) { }
                     using (Td(@class: "dollar-sign")) Write("$");
-                    using (Td(@class: "amount")) using (Div()) Write(G12.ToString("0,0"));
+                    using (Td(@class: "amount")) using (Div()) Write(G12.ToString("#,0"));
                 }
                 using (Tr())
                 {
                     using (Td()) Write("G13");
                     using (Td()) Write("Purchases for making input taxed sales");
                     using (Td(@class: "dollar-sign")) Write("$");
-                    using (Td(@class: "amount")) using (Div()) Write(G13.ToString("0,0"));
+                    using (Td(@class: "amount")) using (Div()) Write(G13.ToString("#,0"));
                     using (Td()) { }
                     using (Td()) { }
                     using (Td()) { }
@@ -240,7 +240,7 @@ namespace ManagerExtensions.Australia
                     using (Td()) Write("G14");
                     using (Td()) Write("Purchases without GST in the price");
                     using (Td(@class: "dollar-sign")) Write("$");
-                    using (Td(@class: "amount")) using (Div()) Write(G14.ToString("0,0"));
+                    using (Td(@class: "amount")) using (Div()) Write(G14.ToString("#,0"));
                     using (Td()) { }
                     using (Td()) { }
                     using (Td()) { }
@@ -250,7 +250,7 @@ namespace ManagerExtensions.Australia
                     using (Td()) Write("G15");
                     using (Td()) Write("Purchases for private use or not income tax deductible");
                     using (Td(@class: "dollar-sign")) Write("$");
-                    using (Td(@class: "amount")) using (Div()) Write(G15.ToString("0,0"));
+                    using (Td(@class: "amount")) using (Div()) Write(G15.ToString("#,0"));
                     using (Td()) { }
                     using (Td()) { }
                     using (Td()) { }
@@ -263,7 +263,7 @@ namespace ManagerExtensions.Australia
                     using (Td()) { }
                     using (Td()) { }
                     using (Td(@class: "dollar-sign")) Write("$");
-                    using (Td(@class: "amount")) using (Div()) Write(G16.ToString("0,0"));
+                    using (Td(@class: "amount")) using (Div()) Write(G16.ToString("#,0"));
                 }
                 using (Tr())
                 {
@@ -273,7 +273,7 @@ namespace ManagerExtensions.Australia
                     using (Td()) { }
                     using (Td()) { }
                     using (Td(@class: "dollar-sign")) Write("$");
-                    using (Td(@class: "amount")) using (Div()) Write(G17.ToString("0,0"));
+                    using (Td(@class: "amount")) using (Div()) Write(G17.ToString("#,0"));
                 }
                 using (Tr(@class: "line"))
                 {
@@ -283,7 +283,7 @@ namespace ManagerExtensions.Australia
                     using (Td()) { }
                     using (Td()) { }
                     using (Td(@class: "dollar-sign")) Write("$");
-                    using (Td(@class: "amount")) using (Div()) Write(G18.ToString("0,0"));
+                    using (Td(@class: "amount")) using (Div()) Write(G18.ToString("#,0"));
                 }
                 using (Tr())
                 {
@@ -293,7 +293,7 @@ namespace ManagerExtensions.Australia
                     using (Td()) { }
                     using (Td()) { }
                     using (Td(@class: "dollar-sign")) Write("$");
-                    using (Td(@class: "amount")) using (Div()) Write(G19.ToString("0,0"));
+                    using (Td(@class: "amount")) using (Div()) Write(G19.ToString("#,0"));
                 }
                 using (Tr())
                 {
@@ -303,7 +303,7 @@ namespace ManagerExtensions.Australia
                     using (Td()) { }
                     using (Td()) { }
                     using (Td(@class: "dollar-sign")) Write("$");
-                    using (Td(@class: "amount")) using (Div()) Write(G20.ToString("0,0"));
+                    using (Td(@class: "amount")) using (Div()) Write(G20.ToString("#,0"));
                 }
                 using (Tr(@class: "line"))
                 {
@@ -317,7 +317,7 @@ namespace ManagerExtensions.Australia
                     using (Td()) { }
                     using (Td()) { }
                     using (Td(@class: "dollar-sign")) Write("$");
-                    using (Td(@class: "amount")) using (Div()) Write(_1A.ToString("0,0"));
+                    using (Td(@class: "amount")) using (Div()) Write(_1A.ToString("#,0"));
                 }
                 if (taxTransactions.Any(x => x.TaxCode == TaxCodes.Australia_Deferred_GST_10))
                 {
@@ -329,7 +329,7 @@ namespace ManagerExtensions.Australia
                         using (Td()) { }
                         using (Td()) { }
                         using (Td(@class: "dollar-sign")) Write("$");
-                        using (Td(@class: "amount")) using (Div()) Write(_7A.ToString("0,0"));
+                        using (Td(@class: "amount")) using (Div()) Write(_7A.ToString("#,0"));
                     }
                     using (Tr())
                     {
@@ -339,7 +339,7 @@ namespace ManagerExtensions.Australia
                         using (Td()) { }
                         using (Td()) { }
                         using (Td(@class: "dollar-sign")) Write("$");
-                        using (Td(@class: "amount")) using (Div()) Write(_8A.ToString("0,0"));
+                        using (Td(@class: "amount")) using (Div()) Write(_8A.ToString("#,0"));
                     }
                 }
                 using (Tr())
@@ -350,7 +350,7 @@ namespace ManagerExtensions.Australia
                     using (Td()) { }
                     using (Td()) { }
                     using (Td(@class: "dollar-sign")) Write("$");
-                    using (Td(@class: "amount")) using (Div()) Write(_1B.ToString("0,0"));
+                    using (Td(@class: "amount")) using (Div()) Write(_1B.ToString("#,0"));
                 }
                 using (Tr())
                 {
@@ -365,7 +365,7 @@ namespace ManagerExtensions.Australia
                     using (Td()) { }
                     using (Td()) { }
                     using (Td(@class: "dollar-sign")) Write("$");
-                    using (Td(@class: "amount")) using (Div()) Write((total < 0 ? (total * -1).ToString("0,0") : total.ToString("0,0")));
+                    using (Td(@class: "amount")) using (Div()) Write((total < 0 ? (total * -1).ToString("#,0") : total.ToString("#,0")));
                 }
             }
         }

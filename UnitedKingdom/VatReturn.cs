@@ -82,35 +82,35 @@ namespace ManagerExtensions.UnitedKingdom
                 {
                     using (Td()) Write("VAT due this period on sales and other outputs");
                     using (Td(@class: "dollar-sign")) Write("£");
-                    using (Td(@class: "amount")) using (Div()) Write(G1.ToString("0,0"));
+                    using (Td(@class: "amount")) using (Div()) Write(G1.ToString("#,0"));
                     using (Td(@class: "gray")) using (Div()) Write("#1 on the VAT Return");
                 }
                 using (Tr())
                 {
                     using (Td()) Write("VAT due in this period on acquisitions from other EC Member States");
                     using (Td(@class: "dollar-sign")) Write("£");
-                    using (Td(@class: "amount")) using (Div()) Write(G2.ToString("0,0"));
+                    using (Td(@class: "amount")) using (Div()) Write(G2.ToString("#,0"));
                     using (Td(@class: "gray")) using (Div()) Write("#2 on the VAT Return");
                 }
                 using (Tr())
                 {
                     using (Td()) Write("<b>Total VAT due (the sum of boxes 1 and 2)</b>");
                     using (Td(@class: "dollar-sign")) Write("£");
-                    using (Td(@class: "amount")) using (Div()) Write(G3.ToString("0,0"));
+                    using (Td(@class: "amount")) using (Div()) Write(G3.ToString("#,0"));
                     using (Td(@class: "gray")) using (Div()) Write("#3 on the VAT Return");
                 }
                 using (Tr())
                 {
                     using (Td()) Write("VAT reclaimed in this period on purchases and other inputs (including acquisitions from EC)");
                     using (Td(@class: "dollar-sign")) Write("£");
-                    using (Td(@class: "amount")) using (Div()) Write(G4.ToString("0,0"));
+                    using (Td(@class: "amount")) using (Div()) Write(G4.ToString("#,0"));
                     using (Td(@class: "gray")) using (Div()) Write("#4 on the VAT Return");
                 }
                 using (Tr(@class: "line"))
                 {
                     using (Td()) Write("<b>Net VAT to be paid to Customs (or reclaimed by you)</b>");
                     using (Td(@class: "dollar-sign")) Write("£");
-                    using (Td(@class: "amount")) using (Div()) Write(G5.ToString("0,0"));
+                    using (Td(@class: "amount")) using (Div()) Write(G5.ToString("#,0"));
                     using (Td(@class: "gray")) using (Div()) Write("#5 on the VAT Return");
                 }
                 using (Tr(@class: "line"))
@@ -121,14 +121,14 @@ namespace ManagerExtensions.UnitedKingdom
                 {
                     using (Td()) Write("Total value of sales and all other outputs excluding VAT (including supplies to EC)");
                     using (Td(@class: "dollar-sign")) Write("£");
-                    using (Td(@class: "amount")) using (Div()) Write(G6.ToString("0,0"));
+                    using (Td(@class: "amount")) using (Div()) Write(G6.ToString("#,0"));
                     using (Td(@class: "gray")) using (Div()) Write("#6 on the VAT Return");
                 }
                 using (Tr())
                 {
                     using (Td()) Write("Total value of purchases and all other inputs excluding VAT (including acquisitions from EC)");
                     using (Td(@class: "dollar-sign")) Write("£");
-                    using (Td(@class: "amount")) using (Div()) Write(G7.ToString("0,0"));
+                    using (Td(@class: "amount")) using (Div()) Write(G7.ToString("#,0"));
                     using (Td(@class: "gray")) using (Div()) Write("#7 on the VAT Return");
                 }
             }

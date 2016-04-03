@@ -70,17 +70,17 @@ namespace ManagerExtensions.Netherlands
                 {
                     using (Td()) Write("1a Leveringen/diensten belast met hoog tarief"); // 1a and 1b Supplies/services taxed at the high or low rate
                     using (Td(@class: "dollar-sign")) Write("€");
-                    using (Td(@class: "amount")) Write(btw21.Sum(x => x.NetSales+x.TaxCollected).ToString("0,0"));
+                    using (Td(@class: "amount")) Write(btw21.Sum(x => x.NetSales+x.TaxCollected).ToString("#,0"));
                     using (Td(@class: "dollar-sign")) Write("€");
-                    using (Td(@class: "amount")) Write(btw21.Sum(x => x.TaxCollected).ToString("0,0"));
+                    using (Td(@class: "amount")) Write(btw21.Sum(x => x.TaxCollected).ToString("#,0"));
                 }
                 using (Tr())
                 {
                     using (Td()) Write("1b Leveringen/diensten belast met laag tarief"); // 1a and 1b Supplies/services taxed at the high or low rate
                     using (Td(@class: "dollar-sign")) Write("€");
-                    using (Td(@class: "amount")) Write(btw06.Sum(x => x.NetSales + x.TaxCollected).ToString("0,0"));
+                    using (Td(@class: "amount")) Write(btw06.Sum(x => x.NetSales + x.TaxCollected).ToString("#,0"));
                     using (Td(@class: "dollar-sign")) Write("€");
-                    using (Td(@class: "amount")) Write(btw06.Sum(x => x.TaxCollected).ToString("0,0"));
+                    using (Td(@class: "amount")) Write(btw06.Sum(x => x.TaxCollected).ToString("#,0"));
                 }
                 using (Tr())
                 {
@@ -178,13 +178,13 @@ namespace ManagerExtensions.Netherlands
                 {
                     using (Td(colspan: 3)) Write("5b Voorbelasting");
                     using (Td(@class: "dollar-sign")) Write("€");
-                    using (Td(@class: "amount")) Write(btw.Sum(x => x.TaxPaid).ToString("0,0"));
+                    using (Td(@class: "amount")) Write(btw.Sum(x => x.TaxPaid).ToString("#,0"));
                 }
                 using (Tr())
                 {
                     using (Td(colspan: 3)) Write("5c Subtotaal (rubriek 5a min 5b)");
                     using (Td(@class: "dollar-sign")) Write("€");
-                    using (Td(@class: "amount")) Write(btw.Sum(x => x.TaxPaid).ToString("0,0"));
+                    using (Td(@class: "amount")) Write(btw.Sum(x => x.TaxPaid).ToString("#,0"));
                 }
                 using (Tr())
                 {
@@ -200,7 +200,7 @@ namespace ManagerExtensions.Netherlands
                     {
                         using (Td(colspan: 3)) Write("Totaal te betalen");
                         using (Td(@class: "dollar-sign")) Write("€");
-                        using (Td(@class: "amount")) Write(total.ToString("0,0"));
+                        using (Td(@class: "amount")) Write(total.ToString("#,0"));
                     }
                 }
                 else
@@ -209,7 +209,7 @@ namespace ManagerExtensions.Netherlands
                     {
                         using (Td(colspan: 3)) Write("Totaal te terug te vragen");
                         using (Td(@class: "dollar-sign")) Write("€");
-                        using (Td(@class: "amount")) Write((total * -1).ToString("0,0"));
+                        using (Td(@class: "amount")) Write((total * -1).ToString("#,0"));
                     }
                 }
             }
