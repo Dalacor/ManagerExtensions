@@ -40,15 +40,15 @@ namespace ManagerExtensions.UnitedKingdom
 
         public override void GenerateFromTaxSummary(string businessName, DateTime from, DateTime to, bool isCashBasis, TaxTransaction[] taxTransactions)
         {
-            var G1 = taxTransactions.Where(x => !x.IsPurchase && x.TaxCode == TaxCodes.UnitedKingdom_VAT_20).Sum(x => x.TaxAmount);
-            G1 += taxTransactions.Where(x => !x.IsPurchase && x.TaxCode == TaxCodes.UnitedKingdom_VAT_05).Sum(x => x.TaxAmount);
+            var G1 = taxTransactions.Where(x => x.TaxCode == TaxCodes.UnitedKingdom_VAT_20).Sum(x => x.TaxCollected);
+            G1 += taxTransactions.Where(x => x.TaxCode == TaxCodes.UnitedKingdom_VAT_05).Sum(x => x.TaxCollected);
             var G2 = 0m;
-            var G4 = taxTransactions.Where(x => x.IsPurchase && x.TaxCode == TaxCodes.UnitedKingdom_VAT_20).Sum(x => x.TaxAmount);
-            G4 += taxTransactions.Where(x => x.TaxCode == TaxCodes.UnitedKingdom_VAT_05).Sum(x => x.TaxAmount);
+            var G4 = taxTransactions.Where(x => x.TaxCode == TaxCodes.UnitedKingdom_VAT_20).Sum(x => x.TaxPaid);
+            G4 += taxTransactions.Where(x => x.TaxCode == TaxCodes.UnitedKingdom_VAT_05).Sum(x => x.TaxPaid);
             G4 += taxTransactions.Where(x => x.TaxCode == TaxCodes.UnitedKingdom_VAT_05_ON_IMPORTS).Sum(x => x.TaxAmount);
             G4 += taxTransactions.Where(x => x.TaxCode == TaxCodes.UnitedKingdom_VAT_20_ON_IMPORTS).Sum(x => x.TaxAmount);
-            var G6 = taxTransactions.Where(x => !x.IsPurchase).Where(x => x.TaxCode == TaxCodes.UnitedKingdom_VAT_20 || x.TaxCode == TaxCodes.UnitedKingdom_VAT_05 || x.TaxCode == TaxCodes.UnitedKingdom_VAT_00 || x.TaxCode == TaxCodes.UnitedKingdom_VAT_Exempt).Sum(x => x.TaxAmount);
-            var G7 = taxTransactions.Where(x => x.IsPurchase).Where(x => x.TaxCode == TaxCodes.UnitedKingdom_VAT_20 || x.TaxCode == TaxCodes.UnitedKingdom_VAT_05 || x.TaxCode == TaxCodes.UnitedKingdom_VAT_00 || x.TaxCode == TaxCodes.UnitedKingdom_VAT_Exempt).Sum(x => x.TaxAmount);
+            var G6 = taxTransactions.Where(x => x.TaxCode == TaxCodes.UnitedKingdom_VAT_20 || x.TaxCode == TaxCodes.UnitedKingdom_VAT_05).Sum(x => x.TaxCollected);
+            var G7 = taxTransactions.Where(x => x.TaxCode == TaxCodes.UnitedKingdom_VAT_20 || x.TaxCode == TaxCodes.UnitedKingdom_VAT_05).Sum(x => x.TaxPaid);
             G7 += taxTransactions.Where(x => x.TaxCode == TaxCodes.UnitedKingdom_VAT_20_ON_IMPORTS).Sum(x => x.TaxAmount) * 5;
             G7 += taxTransactions.Where(x => x.TaxCode == TaxCodes.UnitedKingdom_VAT_05_ON_IMPORTS).Sum(x => x.TaxAmount) * 20;
 
@@ -57,14 +57,14 @@ namespace ManagerExtensions.UnitedKingdom
 
             using (Style())
             {
-                Write("table.report th.section { background-color: #000; color: #fff; padding: 5px }");
-                Write("table.report td { padding-top: 5px; padding-bottom: 5px; }");
-                Write("table.report td.amount div { min-width: 80px; padding: 3px; border: 1px solid #000; text-align: right; font-weight: bold; }");
-                Write("table.report td.gray div { font-weight: bold; text-align: center; background-color: #ccc; padding: 5px; }");
-                Write("table.report td.dollar-sign { text-align: right }");
+                Write("table.taxReport th.section { background-color: #000; color: #fff; padding: 5px }");
+                Write("table.taxReport td { padding: 5px; }");
+                Write("table.taxReport td.amount div { min-width: 80px; padding: 3px; border: 1px solid #000; text-align: right; font-weight: bold; }");
+                Write("table.taxReport td.gray div { font-weight: bold; text-align: center; background-color: #ccc; padding: 5px; }");
+                Write("table.taxReport td.dollar-sign { text-align: right }");
             }
 
-            using (Table(@class: "report"))
+            using (Table(@class: "taxReport"))
             {
                 using (Tr()) using (Th(colspan: 4, style: "font-weight: bold; font-size: 16px; text-align: center; padding-bottom: 10px")) Write(businessName);
                 using (Tr()) using (Th(colspan: 4, style: "font-weight: bold; font-size: 24px; text-align: center; padding-bottom: 10px")) Write(Name);

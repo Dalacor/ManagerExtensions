@@ -38,20 +38,15 @@ namespace ManagerExtensions.Netherlands
             var btw21 = taxTransactions.Where(x => x.TaxCode == TaxCodes.Netherlands_BTW_21).ToArray();
             var btw06 = taxTransactions.Where(x => x.TaxCode == TaxCodes.Netherlands_BTW_06).ToArray();
 
-            var btw21_tax_paid = btw21.Where(x => x.IsPurchase).Sum(x => x.TaxAmount);
-            var btw21_tax_collected = btw21.Where(x => !x.IsPurchase).Sum(x => x.TaxAmount);
-            var btw06_tax_paid = btw06.Where(x => x.IsPurchase).Sum(x => x.TaxAmount);
-            var btw06_tax_collected = btw06.Where(x => !x.IsPurchase).Sum(x => x.TaxAmount);
-
             using (Style())
             {
-                Write("table.report th.section { background-color: #000; color: #fff; padding: 5px }");
-                Write("table.report td { padding-top: 5px; padding-bottom: 5px; }");
-                Write("table.report td.amount { text-align: right; font-weight: bold; }");
-                Write("table.report td.dollar-sign { text-align: left }");
+                Write("table.taxReport th.section { background-color: #000; color: #fff; padding: 5px }");
+                Write("table.taxReport td { padding: 5px; }");
+                Write("table.taxReport td.amount { text-align: right; font-weight: bold; }");
+                Write("table.taxReport td.dollar-sign { text-align: left }");
             }
 
-            using (Table(@class: "report"))
+            using (Table(@class: "taxReport"))
             {
                 using (Tr()) using (Th(colspan: 5, style: "font-weight: bold; font-size: 16px; text-align: center; padding-bottom: 10px")) Write(businessName);
                 using (Tr()) using (Th(colspan: 5, style: "font-weight: bold; font-size: 24px; text-align: center; padding-bottom: 10px")) Write(Name);
@@ -75,17 +70,17 @@ namespace ManagerExtensions.Netherlands
                 {
                     using (Td()) Write("1a Leveringen/diensten belast met hoog tarief"); // 1a and 1b Supplies/services taxed at the high or low rate
                     using (Td(@class: "dollar-sign")) Write("€");
-                    using (Td(@class: "amount")) Write(btw21.Where(x => !x.IsPurchase).Sum(x => x.NetAmount+x.TaxAmount).ToString("0,0"));
+                    using (Td(@class: "amount")) Write(btw21.Sum(x => x.NetSales+x.TaxCollected).ToString("0,0"));
                     using (Td(@class: "dollar-sign")) Write("€");
-                    using (Td(@class: "amount")) Write(btw21.Where(x => !x.IsPurchase).Sum(x => x.TaxAmount).ToString("0,0"));
+                    using (Td(@class: "amount")) Write(btw21.Sum(x => x.TaxCollected).ToString("0,0"));
                 }
                 using (Tr())
                 {
                     using (Td()) Write("1b Leveringen/diensten belast met laag tarief"); // 1a and 1b Supplies/services taxed at the high or low rate
                     using (Td(@class: "dollar-sign")) Write("€");
-                    using (Td(@class: "amount")) Write(btw06.Where(x => !x.IsPurchase).Sum(x => x.NetAmount + x.TaxAmount).ToString("0,0"));
+                    using (Td(@class: "amount")) Write(btw06.Sum(x => x.NetSales + x.TaxCollected).ToString("0,0"));
                     using (Td(@class: "dollar-sign")) Write("€");
-                    using (Td(@class: "amount")) Write(btw06.Where(x => !x.IsPurchase).Sum(x => x.TaxAmount).ToString("0,0"));
+                    using (Td(@class: "amount")) Write(btw06.Sum(x => x.TaxCollected).ToString("0,0"));
                 }
                 using (Tr())
                 {
@@ -183,13 +178,13 @@ namespace ManagerExtensions.Netherlands
                 {
                     using (Td(colspan: 3)) Write("5b Voorbelasting");
                     using (Td(@class: "dollar-sign")) Write("€");
-                    using (Td(@class: "amount")) Write(btw.Where(x => x.IsPurchase).Sum(x => x.TaxAmount).ToString("0,0"));
+                    using (Td(@class: "amount")) Write(btw.Sum(x => x.TaxPaid).ToString("0,0"));
                 }
                 using (Tr())
                 {
                     using (Td(colspan: 3)) Write("5c Subtotaal (rubriek 5a min 5b)");
                     using (Td(@class: "dollar-sign")) Write("€");
-                    using (Td(@class: "amount")) Write(btw.Where(x => x.IsPurchase).Sum(x => x.TaxAmount).ToString("0,0"));
+                    using (Td(@class: "amount")) Write(btw.Sum(x => x.TaxPaid).ToString("0,0"));
                 }
                 using (Tr())
                 {
