@@ -38,31 +38,28 @@ namespace ManagerExtensions.Australia
 
         public override void GenerateFromTaxSummary(string businessName, DateTime from, DateTime to, bool isCashBasis, TaxTransaction[] taxTransactions)
         {
-            var G2 = decimal.Floor(taxTransactions.Where(x => x.TaxCode == TaxCodes.Australia_GST_FREE_EXPORT).Sum(x => x.NetSales));
-            var G3 = decimal.Floor(taxTransactions.Where(x => x.TaxCode == TaxCodes.Australia_GST_FREE).Sum(x => x.NetSales));
-            var G4 = decimal.Floor(taxTransactions.Where(x => x.TaxCode == TaxCodes.Australia_INPUT_TAXED).Sum(x => x.NetSales));
-            var G8 = decimal.Floor(taxTransactions.Where(x => x.TaxCode == TaxCodes.Australia_GST_10).Sum(x => x.NetSales + x.TaxCollected));
-            var G9 = decimal.Floor(taxTransactions.Where(x => x.TaxCode == TaxCodes.Australia_GST_10).Sum(x => x.TaxCollected));
+            var G2 = taxTransactions.Where(x => x.TaxCode == TaxCodes.Australia_GST_FREE_EXPORT).Sum(x => x.NetSales);
+            var G3 = taxTransactions.Where(x => x.TaxCode == TaxCodes.Australia_GST_FREE).Sum(x => x.NetSales);
+            var G4 = taxTransactions.Where(x => x.TaxCode == TaxCodes.Australia_INPUT_TAXED).Sum(x => x.NetSales);
+            var G8 = taxTransactions.Where(x => x.TaxCode == TaxCodes.Australia_GST_10).Sum(x => x.NetSales + x.TaxCollected);
+            var G9 = taxTransactions.Where(x => x.TaxCode == TaxCodes.Australia_GST_10).Sum(x => x.TaxCollected);
 
-            var _7A = decimal.Floor(taxTransactions.Where(x => x.TaxCode == TaxCodes.Australia_Deferred_GST_10).Sum(x => x.TaxAmount));
+            var _7A = taxTransactions.Where(x => x.TaxCode == TaxCodes.Australia_Deferred_GST_10).Sum(x => x.TaxAmount);
 
             var G10 = taxTransactions.Where(x => x.IsCapitalAccount && (x.TaxCode == TaxCodes.Australia_GST_10 || x.TaxCode == TaxCodes.Australia_GST_FREE || x.TaxCode == TaxCodes.Australia_INPUT_TAXED)).Sum(x => x.NetPurchases + x.TaxPaid);
             G10 += taxTransactions.Where(x => x.IsCapitalAccount && (x.TaxCode == TaxCodes.Australia_Deferred_GST_10)).Sum(x => x.NetPurchases + x.TaxPaid);
             G10 += taxTransactions.Where(x => x.IsCapitalAccount && (x.TaxCode == TaxCodes.Australia_GST_10_ON_IMPORTS)).Sum(x => x.TaxPaid * 11m);
-            G10 = decimal.Floor(G10);
 
             var G11 = taxTransactions.Where(x => !x.IsCapitalAccount && (x.TaxCode == TaxCodes.Australia_GST_10 || x.TaxCode == TaxCodes.Australia_GST_FREE || x.TaxCode == TaxCodes.Australia_INPUT_TAXED)).Sum(x => x.NetPurchases + x.TaxPaid);
             G11 += taxTransactions.Where(x => !x.IsCapitalAccount && (x.TaxCode == TaxCodes.Australia_Deferred_GST_10)).Sum(x => x.NetPurchases + x.TaxPaid);
             G11 += taxTransactions.Where(x => !x.IsCapitalAccount && (x.TaxCode == TaxCodes.Australia_GST_10_ON_IMPORTS)).Sum(x => x.TaxPaid * 11m);
-            G11 = decimal.Floor(G11);
 
-            var G13 = decimal.Floor(taxTransactions.Where(x => x.TaxCode == TaxCodes.Australia_INPUT_TAXED).Sum(x => x.NetPurchases));
-            var G14 = decimal.Floor(taxTransactions.Where(x => x.TaxCode == TaxCodes.Australia_GST_FREE).Sum(x => x.NetPurchases));
+            var G13 = taxTransactions.Where(x => x.TaxCode == TaxCodes.Australia_INPUT_TAXED).Sum(x => x.NetPurchases);
+            var G14 = taxTransactions.Where(x => x.TaxCode == TaxCodes.Australia_GST_FREE).Sum(x => x.NetPurchases);
 
             var G20 = taxTransactions.Where(x => x.TaxCode == TaxCodes.Australia_GST_10).Sum(x => x.TaxPaid);
             G20 += taxTransactions.Where(x => x.TaxCode == TaxCodes.Australia_GST_10_ON_IMPORTS).Sum(x => x.TaxAmount);
             G20 += _7A;
-            G20 = decimal.Floor(G20);
 
             var G5 = G2 + G3 + G4;
             var G1 = G5 + G8;
@@ -80,6 +77,33 @@ namespace ManagerExtensions.Australia
             var _1B = G20;
             var _8B = _1B;
             var _9 = _8B - _8A;
+
+            G1 = decimal.Floor(G1);
+            G2 = decimal.Floor(G2);
+            G3 = decimal.Floor(G3);
+            G4 = decimal.Floor(G4);
+            G5 = decimal.Floor(G5);
+            G6 = decimal.Floor(G6);
+            G7 = decimal.Floor(G7);
+            G8 = decimal.Floor(G8);
+            G9 = decimal.Floor(G9);
+            G10 = decimal.Floor(G10);
+            G11 = decimal.Floor(G11);
+            G12 = decimal.Floor(G12);
+            G13 = decimal.Floor(G13);
+            G14 = decimal.Floor(G14);
+            G15 = decimal.Floor(G15);
+            G16 = decimal.Floor(G16);
+            G17 = decimal.Floor(G17);
+            G18 = decimal.Floor(G18);
+            G19 = decimal.Floor(G19);
+            G20 = decimal.Floor(G20);
+
+            _1A = decimal.Floor(_1A);
+            _1B = decimal.Floor(_1B);
+            _8A = decimal.Floor(_8A);
+            _8B = decimal.Floor(_8B);
+            _9 = decimal.Floor(_9);
 
             using (Style())
             {
@@ -337,7 +361,7 @@ namespace ManagerExtensions.Australia
                     using (Tr())
                     {
                         using (Td()) Write("8A");
-                        using (Td()) Write("Total amount you owe the ATO (1A + 8A)");
+                        using (Td()) Write("Total amount you owe the ATO (1A + 7A)");
                         using (Td()) { }
                         using (Td()) { }
                         using (Td()) { }
