@@ -7,6 +7,14 @@ namespace ManagerExtensions.UnitedKingdom
 {
     public sealed class VatReturn : TaxReport
     {
+        public override Guid UUID
+        {
+            get
+            {
+                return new Guid("12e5e9fb-d8e8-4fce-aa33-8ba564117550");
+            }
+        }
+
         public override string Name
         {
             get

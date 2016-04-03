@@ -5,6 +5,14 @@ namespace ManagerExtensions.Australia
 {
     public sealed class GstCalculationWorksheet : TaxReport
     {
+        public override Guid UUID
+        {
+            get
+            {
+                return new Guid("11acbfe1-0d24-4161-b366-fe905f2bcfd9");
+            }
+        }
+
         public override string Name
         {
             get
