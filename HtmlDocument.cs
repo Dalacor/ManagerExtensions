@@ -13,7 +13,7 @@ namespace ManagerExtensions
             sb.Append(s);
         }
 
-        public void string GetHtml()
+        public string GetHtml()
         {
             return sb.ToString();
         }
