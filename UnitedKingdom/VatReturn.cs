@@ -57,7 +57,7 @@ namespace ManagerExtensions.UnitedKingdom
 
             using (Style())
             {
-                Write("table.report th.section { background-color: #000; color: #fff; }");
+                Write("table.report th.section { background-color: #000; color: #fff; padding: 5px }");
                 Write("table.report td { padding-top: 5px; padding-bottom: 5px; }");
                 Write("table.report td.amount div { min-width: 80px; padding: 3px; border: 1px solid #000; text-align: right; font-weight: bold; }");
                 Write("table.report td.gray div { font-weight: bold; text-align: center; background-color: #ccc; padding: 5px; }");
@@ -66,19 +66,13 @@ namespace ManagerExtensions.UnitedKingdom
 
             using (Table(@class: "report"))
             {
-                using (Tr())
+                using (Tr()) using (Th(colspan: 4, style: "font-weight: bold; font-size: 16px; text-align: center; padding-bottom: 10px")) Write(businessName);
+                using (Tr()) using (Th(colspan: 4, style: "font-weight: bold; font-size: 24px; text-align: center; padding-bottom: 10px")) Write(Name);
+                using (Tr()) using (Th(colspan: 4, style: "font-weight: bold; font-size: 16px; text-align: center; padding-bottom: 10px")) Write("From " + from.ToString("MMMM d, yyyy") + " until " + to.ToString("MMMM d, yyyy"));
+                using (Tr()) using (Th(colspan: 4, style: "font-weight: bold; font-size: 16px; text-align: center; padding-bottom: 10px"))
                 {
-                    using (Th(@class: "header", colspan: 4))
-                    {
-                        using (H3(style: "font-weight: bold")) Write(businessName);
-                        using (H1(style: "font-weight: bold")) Write("VAT Calculation Worksheet");
-                        using (H3(style: "font-weight: bold")) Write("From " + from.ToString("MMMM d, yyyy") + " until " + to.ToString("MMMM d, yyyy"));
-                        using (H3(style: "font-weight: bold"))
-                        {
-                            if (!isCashBasis) Write("Acrual basis");
-                            if (isCashBasis) Write("Cash basis");
-                        }
-                    }
+                    if (isCashBasis) Write("Cash basis");
+                    if (!isCashBasis) Write("Acrual basis");
                 }
                 using (Tr(@class: "line"))
                 {

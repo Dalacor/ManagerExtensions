@@ -45,7 +45,7 @@ namespace ManagerExtensions.Netherlands
 
             using (Style())
             {
-                Write("table.report th.section { background-color: #000; color: #fff; }");
+                Write("table.report th.section { background-color: #000; color: #fff; padding: 5px }");
                 Write("table.report td { padding-top: 5px; padding-bottom: 5px; }");
                 Write("table.report td.amount { text-align: right; font-weight: bold; }");
                 Write("table.report td.dollar-sign { text-align: left }");
@@ -53,19 +53,13 @@ namespace ManagerExtensions.Netherlands
 
             using (Table(@class: "report"))
             {
-                using (Tr())
+                using (Tr()) using (Th(colspan: 5, style: "font-weight: bold; font-size: 16px; text-align: center; padding-bottom: 10px")) Write(businessName);
+                using (Tr()) using (Th(colspan: 5, style: "font-weight: bold; font-size: 24px; text-align: center; padding-bottom: 10px")) Write(Name);
+                using (Tr()) using (Th(colspan: 5, style: "font-weight: bold; font-size: 16px; text-align: center; padding-bottom: 10px")) Write("From " + from.ToString("MMMM d, yyyy") + " until " + to.ToString("MMMM d, yyyy"));
+                using (Tr()) using (Th(colspan: 5, style: "font-weight: bold; font-size: 16px; text-align: center; padding-bottom: 10px"))
                 {
-                    using (Th(@class: "header", colspan: 5))
-                    {
-                        using (H3(style: "font-weight: bold")) Write(businessName);
-                        using (H1(style: "font-weight: bold")) Write("VAT Calculation Worksheet");
-                        using (H3(style: "font-weight: bold")) Write("From " + from.ToString("MMMM d, yyyy") + " until " + to.ToString("MMMM d, yyyy"));
-                        using (H3(style: "font-weight: bold"))
-                        {
-                            if (!isCashBasis) Write("Acrual basis");
-                            if (isCashBasis) Write("Cash basis");
-                        }
-                    }
+                    if (isCashBasis) Write("Cash basis");
+                    if (!isCashBasis) Write("Acrual basis");
                 }
                 using (Tr())
                 {
