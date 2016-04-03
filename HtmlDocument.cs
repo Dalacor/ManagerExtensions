@@ -13,6 +13,11 @@ namespace ManagerExtensions
             sb.Append(s);
         }
 
+        public void string GetHtml()
+        {
+            return sb.ToString();
+        }
+
         public Html.Html Html() { return new Html.Html(sb: this.sb); }
         public void Hr() { Write("<hr />"); }
         public void Br() { Write("<br />"); }
