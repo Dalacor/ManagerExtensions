@@ -38,12 +38,16 @@
   <ItemGroup>
     <Compile Include="AssemblyInfo.cs" />
     <Compile Include="Australia\GstCalculationWorksheet.cs" />
+    <Compile Include="Australia\TaxCodes.cs" />
     <Compile Include="Country.cs" />
     <Compile Include="HtmlDocument.cs" />
+    <Compile Include="Netherlands\TaxCodes.cs" />
     <Compile Include="Netherlands\VatReturn.cs" />
+    <Compile Include="TaxCode.cs" />
     <Compile Include="TaxReport.cs" />
     <Compile Include="TaxCodes.cs" />
     <Compile Include="TaxTransaction.cs" />
+    <Compile Include="UnitedKingdom\TaxCodes.cs" />
     <Compile Include="UnitedKingdom\VatReturn.cs" />
   </ItemGroup>
   <ItemGroup>

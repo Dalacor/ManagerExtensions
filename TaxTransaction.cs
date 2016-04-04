@@ -7,7 +7,7 @@ namespace ManagerExtensions
 {
     public sealed class TaxTransaction
     {
-        public Guid TaxCode;
+        public TaxCode TaxCode;
 
         public decimal NetPurchases { get; set; }
         public decimal TaxPaid { get; set; }

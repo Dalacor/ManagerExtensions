@@ -23,7 +23,7 @@ namespace ManagerExtensions.UnitedKingdom
             }
         }
 
-        public override Guid[] SupportedTaxCodes
+        public override TaxCode[] SupportedTaxCodes
         {
             get
             {
