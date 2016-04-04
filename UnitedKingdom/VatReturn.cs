@@ -28,29 +28,29 @@ namespace ManagerExtensions.UnitedKingdom
             get
             {
                 return new[] {
-                    TaxCodes.UnitedKingdom_VAT_00,
-                    TaxCodes.UnitedKingdom_VAT_05,
-                    TaxCodes.UnitedKingdom_VAT_05_ON_IMPORTS,
-                    TaxCodes.UnitedKingdom_VAT_20,
-                    TaxCodes.UnitedKingdom_VAT_20_ON_IMPORTS,
-                    TaxCodes.UnitedKingdom_VAT_Exempt
+                    TaxCodes.VAT_00,
+                    TaxCodes.VAT_05,
+                    TaxCodes.VAT_05_ON_IMPORTS,
+                    TaxCodes.VAT_20,
+                    TaxCodes.VAT_20_ON_IMPORTS,
+                    TaxCodes.VAT_Exempt
                 };
             }
         }
 
         public override void GenerateFromTaxSummary(string businessName, DateTime from, DateTime to, bool isCashBasis, TaxTransaction[] taxTransactions)
         {
-            var G1 = taxTransactions.Where(x => x.TaxCode == TaxCodes.UnitedKingdom_VAT_20).Sum(x => x.TaxCollected);
-            G1 += taxTransactions.Where(x => x.TaxCode == TaxCodes.UnitedKingdom_VAT_05).Sum(x => x.TaxCollected);
+            var G1 = taxTransactions.Where(x => x.TaxCode == TaxCodes.VAT_20).Sum(x => x.TaxCollected);
+            G1 += taxTransactions.Where(x => x.TaxCode == TaxCodes.VAT_05).Sum(x => x.TaxCollected);
             var G2 = 0m;
-            var G4 = taxTransactions.Where(x => x.TaxCode == TaxCodes.UnitedKingdom_VAT_20).Sum(x => x.TaxPaid);
-            G4 += taxTransactions.Where(x => x.TaxCode == TaxCodes.UnitedKingdom_VAT_05).Sum(x => x.TaxPaid);
-            G4 += taxTransactions.Where(x => x.TaxCode == TaxCodes.UnitedKingdom_VAT_05_ON_IMPORTS).Sum(x => x.TaxAmount);
-            G4 += taxTransactions.Where(x => x.TaxCode == TaxCodes.UnitedKingdom_VAT_20_ON_IMPORTS).Sum(x => x.TaxAmount);
-            var G6 = taxTransactions.Where(x => x.TaxCode == TaxCodes.UnitedKingdom_VAT_20 || x.TaxCode == TaxCodes.UnitedKingdom_VAT_05 || x.TaxCode == TaxCodes.UnitedKingdom_VAT_00 || x.TaxCode == TaxCodes.UnitedKingdom_VAT_Exempt).Sum(x => x.NetSales);
-            var G7 = taxTransactions.Where(x => x.TaxCode == TaxCodes.UnitedKingdom_VAT_20 || x.TaxCode == TaxCodes.UnitedKingdom_VAT_05 || x.TaxCode == TaxCodes.UnitedKingdom_VAT_00 || x.TaxCode == TaxCodes.UnitedKingdom_VAT_Exempt).Sum(x => x.NetPurchases);
-            G7 += taxTransactions.Where(x => x.TaxCode == TaxCodes.UnitedKingdom_VAT_20_ON_IMPORTS).Sum(x => x.TaxAmount) * 5;
-            G7 += taxTransactions.Where(x => x.TaxCode == TaxCodes.UnitedKingdom_VAT_05_ON_IMPORTS).Sum(x => x.TaxAmount) * 20;
+            var G4 = taxTransactions.Where(x => x.TaxCode == TaxCodes.VAT_20).Sum(x => x.TaxPaid);
+            G4 += taxTransactions.Where(x => x.TaxCode == TaxCodes.VAT_05).Sum(x => x.TaxPaid);
+            G4 += taxTransactions.Where(x => x.TaxCode == TaxCodes.VAT_05_ON_IMPORTS).Sum(x => x.TaxAmount);
+            G4 += taxTransactions.Where(x => x.TaxCode == TaxCodes.VAT_20_ON_IMPORTS).Sum(x => x.TaxAmount);
+            var G6 = taxTransactions.Where(x => x.TaxCode == TaxCodes.VAT_20 || x.TaxCode == TaxCodes.VAT_05 || x.TaxCode == TaxCodes.VAT_00 || x.TaxCode == TaxCodes.VAT_Exempt).Sum(x => x.NetSales);
+            var G7 = taxTransactions.Where(x => x.TaxCode == TaxCodes.VAT_20 || x.TaxCode == TaxCodes.VAT_05 || x.TaxCode == TaxCodes.VAT_00 || x.TaxCode == TaxCodes.VAT_Exempt).Sum(x => x.NetPurchases);
+            G7 += taxTransactions.Where(x => x.TaxCode == TaxCodes.VAT_20_ON_IMPORTS).Sum(x => x.TaxAmount) * 5;
+            G7 += taxTransactions.Where(x => x.TaxCode == TaxCodes.VAT_05_ON_IMPORTS).Sum(x => x.TaxAmount) * 20;
 
             var G3 = G1 + G2;
             var G5 = G3 - G4;
