@@ -50,6 +50,13 @@ namespace ManagerExtensions
             Australia.TaxCodes.GST_FREE_EXPORT,
             Australia.TaxCodes.INPUT_TAXED,
 
+            UnitedKingdom.TaxCodes.VAT_00,
+            UnitedKingdom.TaxCodes.VAT_05,
+            UnitedKingdom.TaxCodes.VAT_05_ON_IMPORTS,
+            UnitedKingdom.TaxCodes.VAT_20,
+            UnitedKingdom.TaxCodes.VAT_20_ON_IMPORTS,
+            UnitedKingdom.TaxCodes.VAT_Exempt,
+
             new TaxCode(Norway_VAT_25, Country.Norway, "VAT 25%", 25m),
             new TaxCode(Norway_VAT_15, Country.Norway, "VAT 15%", 15m),
             new TaxCode(Norway_VAT_14, Country.Norway, "VAT 14%", 14m),
