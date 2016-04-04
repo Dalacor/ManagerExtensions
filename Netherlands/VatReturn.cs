@@ -17,7 +17,7 @@ namespace ManagerExtensions.Netherlands
         {
             get
             {
-                return "VAT Calculation Worksheet";
+                return "Concept BTW Aangifte";
             }
         }
 
