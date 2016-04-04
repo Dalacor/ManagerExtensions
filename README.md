@@ -1,2 +1,3 @@
-# ManagerExtensions
-Community contributed source code to improve Manager - free accounting software
+# Manager Extensions
+
+Community contributed code to improve accounting software Manager.
