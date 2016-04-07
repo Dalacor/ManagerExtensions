@@ -55,6 +55,8 @@ namespace ManagerExtensions.UnitedKingdom
             var G9 = taxTransactions.Where(x => x.TaxCode == TaxCodes.VAT_20).Sum(x => x.NetPurchases);
             G8 += taxTransactions.Where(x => x.TaxCode == TaxCodes.VAT_05_ON_IMPORTS).Sum(x => x.TaxAmount);
             G8 += taxTransactions.Where(x => x.TaxCode == TaxCodes.VAT_20_ON_IMPORTS).Sum(x => x.TaxAmount);
+            G9 += taxTransactions.Where(x => x.TaxCode == TaxCodes.VAT_05_ON_IMPORTS).Sum(x => x.TaxAmount);
+            G9 += taxTransactions.Where(x => x.TaxCode == TaxCodes.VAT_20_ON_IMPORTS).Sum(x => x.TaxAmount);
             var G3 = G1 + G2;
             var G5 = G3 - G4;
 
